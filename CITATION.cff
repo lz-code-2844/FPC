@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the article (preferred) and/or the software."
+type: software
+title: "FlowPredictor-Corrector: A Physics-Informed Point-Cloud Neural Network for Fast 3D Hemodynamics Prediction"
+authors:
+  - family-names: "Your Family Name"
+    given-names: "Your Given Name"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+repository-code: "https://github.com/yourusername/FlowPredictor-Corrector"
+license: MIT
+keywords:
+  - physics-informed neural networks
+  - hemodynamics
+  - point cloud
+  - deep learning
+  - computational fluid dynamics
+  - Navier-Stokes equations
+preferred-citation:
+  type: article
+  title: "FlowPredictor-Corrector: A Physics-Informed Point-Cloud Neural Network for Fast 3D Hemodynamics Prediction"
+  authors:
+    - family-names: "xxx"
+      given-names: "xxx"
+  year: 2025
+  journal: "IEEE Journal of Biomedical and Health Informatics"

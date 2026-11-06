@@ -1,0 +1,83 @@
+# 所有需要用户填写的参数均保持 null；请依据每项中文说明填写。
+# Python 中对应空值为 None；路径按当前运行目录填写。
+system:
+  device: null  # 运行设备，填写 cpu 或 cuda:设备编号
+  num_workers: null  # 数据加载进程数，非负整数
+  seed: null  # 随机种子，非负整数
+  deterministic: null  # 是否启用确定性算法，布尔值
+  benchmark: null  # 是否启用 cuDNN 算法搜索，布尔值
+data:
+  train_data_pkl: null  # 训练集元数据 pkl 文件路径
+  val_data_pkl: null  # 验证集元数据 pkl 路径；不使用验证集时保留 null
+  train_input_path: null  # 训练点云 TXT 目录路径
+  val_input_path: null  # 验证点云 TXT 目录路径
+  train_output_path: null  # 训练病例索引 CSV 文件路径
+  val_output_path: null  # 验证病例索引 CSV 文件路径
+  point_number: null  # 每病例采样点数，正整数
+  normalize: null  # 是否归一化，布尔值
+  augmentation: null  # 是否启用数据增强，布尔值
+  test_input_path: null  # 测试点云 TXT 目录路径
+  test_pkl_path: null  # 测试数据元数据 pkl 文件路径
+model:
+  name: null  # 模型名称，填写 FPCModel
+  predictor:
+    in_channels: null  # 输入通道数，须与 t,x,y,z 对应
+    out_channels: null  # 输出通道数，须与 u,v,w,p 对应
+    encoder_dims: null  # 编码层通道数列表，按原网络结构填写
+    decoder_dims: null  # 解码层通道数列表，按原网络结构填写
+    mlp_dims: null  # 预测头隐藏层通道数列表，按原网络结构填写
+    dropout: null  # 随机失活概率，无量纲
+  corrector:
+    enabled: null  # 是否启用物理校正，布尔值
+    residual_type: null  # 残差类型，填写 navier_stokes
+    rho: null  # 血液密度，kg/m³；填写与当前 CFD 一致的密度
+    mu: null  # 恒定有效动力黏度，Pa·s；按正文采用 CFD Carreau 的 mu_inf
+    collocation_points: null  # 每病例物理约束采样点数，正整数，不超过输入点数
+    coordinate_scale: null  # t,x,y,z 转为 SI 的比例列表；单位 s,m,m,m；须匹配当前病例归一化范围
+    field_scale: null  # u,v,w,p 转为 SI 的比例列表；单位 m/s,m/s,m/s,Pa；须匹配当前病例
+    field_offset: null  # u,v,w,p 转为 SI 的偏移列表；单位 m/s,m/s,m/s,Pa；须匹配当前病例
+  pointnet:
+    sa1:
+      npoint: null  # SA1 查询点数，正整数
+      radius: null  # SA1 空间邻域半径，与输入坐标采用相同尺度
+      nsample: null  # SA1 邻域点数，正整数
+    sa2:
+      npoint: null  # SA2 查询点数，正整数
+      radius: null  # SA2 空间邻域半径，与输入坐标采用相同尺度
+      nsample: null  # SA2 邻域点数，正整数
+training:
+  batch_size: null  # 每批病例数，正整数
+  epochs: null  # 总训练轮数，正整数
+  start_epoch: null  # 开始训练轮次，正整数
+  optimizer:
+    name: null  # 优化器名称，按原训练入口填写
+    lr: null  # 学习率，正数
+    weight_decay: null  # 权重衰减，非负数
+    betas: null  # Adam 两个动量系数的列表，无量纲
+  scheduler:
+    name: null  # 学习率调度器名称，按原训练入口填写
+    T_max: null  # 余弦退火周期，单位为轮
+    eta_min: null  # 最低学习率，非负数
+  loss_balancing:
+    method: null  # 原损失平衡方法名称
+    ema_alpha: null  # 原梯度 EMA 的平滑系数，无量纲
+    initial_lambda: null  # 初始物理损失权重，无量纲
+  checkpointing:
+    enabled: null  # 是否保存 checkpoint，布尔值
+    frequency: null  # checkpoint 保存间隔，单位为轮
+    save_best: null  # 是否保存最佳模型，布尔值
+    save_last: null  # 是否保存最后模型，布尔值
+output:
+  checkpoint_dir: null  # checkpoint 保存目录路径
+  weight_dir: null  # 模型权重保存目录路径
+  log_dir: null  # 训练日志保存目录路径
+  result_dir: null  # 预测结果保存目录路径
+  viz_dir: null  # 可视化输出目录路径
+  log_frequency: null  # 日志输出间隔，单位为迭代步
+  tensorboard: null  # 是否使用 TensorBoard，布尔值
+  wandb: null  # 是否使用 wandb，布尔值
+testing:
+  batch_size: null  # 测试批大小，正整数
+  device: null  # 测试设备，填写 cpu 或 cuda:设备编号
+  save_predictions: null  # 是否保存预测结果，布尔值
+  save_format: null  # 结果文件格式，按原推理入口填写
